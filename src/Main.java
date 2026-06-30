@@ -3,6 +3,14 @@ import Animals.Animal;
 import Animals.Cat;
 import Animals.Dog;
 import Animals.Bird;
+import Salaries.Designer;
+import Salaries.Employer;
+import Salaries.Manager;
+import Salaries.Programmer;
+import Transports.Boat;
+import Transports.Car;
+import Transports.Plane;
+import Transports.Transport;
 
 void main() {
 
@@ -25,4 +33,36 @@ void main() {
     for (Animal i: animals) {
         i.getSound();
     }*/
+
+    //3.
+    /*Employer[] employers = {new Programmer(), new Designer(), new Manager()};
+
+    System.out.println("Based employers");
+    for (Employer e: employers) {
+        e.calculateSalary();
+    }
+
+    Employer[] upgradedEmployers = {new Programmer("Boris", 70000.00, 3500.00),
+                                    new Designer("Olaf", 50000.00, 48333.11),
+                                    new Manager("Abram", 28717.09, 150000.00)};
+
+    System.out.println("Upgraded employers");
+    for (Employer e: upgradedEmployers) {
+        e.calculateSalary();
+    }*/
+
+    //4.
+    /*Transport [] transports = {new Car("Lada", 180),
+                               new Plane("Airbus", 750),
+                               new Boat("River", 55)};
+
+    for (Transport t: transports) {
+        t.printInfo();
+        t.start();
+        t.stop();
+    }*/
+    //5.
+
+    //6.
+
 }
