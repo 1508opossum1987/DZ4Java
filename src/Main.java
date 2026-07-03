@@ -11,6 +11,11 @@ import Transports.Boat;
 import Transports.Car;
 import Transports.Plane;
 import Transports.Transport;
+import Interfaces.Fish;
+import Interfaces.AmphibiousCar;
+import Interfaces.Airplane;
+import Interfaces.Duck;
+import Interfaces.Initiable;
 
 void main() {
 
@@ -62,6 +67,13 @@ void main() {
         t.stop();
     }*/
     //5.
+    Initiable[] objects = {new Fish("fish"),
+            new AmphibiousCar("amphibiousCar"),
+            new Airplane("airplane"),
+            new Duck("duck")};
+    for (Initiable o : objects) {
+        o.init();
+    }
 
     //6.
 
