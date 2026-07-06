@@ -16,9 +16,9 @@ public class Knight extends Character implements Warrior{//рыцарь
     }
 
     @Override
-    public void attack() {
+    public void attack(Character target) {
         warrior();
-        takeDamage(damage);
+        target.takeDamage(damage);
     }
 
     @Override

@@ -96,11 +96,4 @@ void main() {
     for (Character b: botArmy){
         b.printStats();
     }
-
-    boolean isFinal=false;
-
-    //общий цикл запуска игры
-    while (!isFinal){
-
-    }
 }

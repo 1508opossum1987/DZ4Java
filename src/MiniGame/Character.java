@@ -11,7 +11,7 @@ public abstract class Character {
         level = 1;//по умолчанию 1 уровень
     }
 
-    public Character (String name){//частный случай перегрузки, когда в начале игры создаются только имена героев
+    public Character(String name) {//частный случай перегрузки, когда в начале игры создаются только имена героев
         this.name = name;
         hp = 100;//изначально должно быть 100 hp
         level = 1;//по умолчанию 1 уровень
@@ -39,7 +39,11 @@ public abstract class Character {
         return this.hp;
     }
 
-    public abstract void attack();
+    protected void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public abstract void attack(Character target);
 
     public void takeDamage(int damage) {//вызывается у цели
         hp -= damage;
@@ -47,13 +51,19 @@ public abstract class Character {
         System.out.println(name + " получает " + damage + " урона. Осталось HP: " + hp);
     }
 
-    public void heal(int health) {//вызывается у цели
-        hp += health;
-        if (hp > 100) hp = 100;
-        System.out.println(name + " получает " + health + " очков здоровья. Осталось HP: " + hp);
+    public void heal(Character target) {
+        System.out.println(getName() + " не умеет лечить!");
+    }
+
+    public boolean canHeal() {
+        return false;
     }
 
     public void printStats() {
         System.out.println("Имя: " + name + ". Здоровье: " + hp + ". Уровень: " + level + ".");
+    }
+
+    public boolean isAlive (){
+        return hp > 0;
     }
 }

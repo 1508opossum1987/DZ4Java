@@ -17,9 +17,9 @@ public class Wizard extends Character implements Mage {//волшебник
     }
 
     @Override
-    public void attack() {
+    public void attack(Character target) {
         mage();
-        takeDamage(damage);
+        target.takeDamage(damage);
     }
 
     @Override

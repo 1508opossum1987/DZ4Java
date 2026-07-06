@@ -3,7 +3,7 @@ package MiniGame;
 public class Priest extends Character implements Healer, Mage {//монах
     //Монах может атаковать, использовать магию или лечить себя или союзников
     int damage = this.getLevel();
-    int health = this.getLevel() * 2;//высокая способность лечить, 3 очка = 1 атака магией + 2 лечение
+    //высокая способность лечить, 3 очка = 1 атака магией + 2 лечение
 
     public Priest() {
         super();
@@ -18,14 +18,25 @@ public class Priest extends Character implements Healer, Mage {//монах
     }
 
     @Override
-    public void attack() {
+    public void attack(Character target) {
         mage();
-        takeDamage(damage);
+        target.takeDamage(damage);
     }
 
     @Override
-    public void healer() {
-        heal(health);
+    public void healer(Character target) {
+        int healAmount = getLevel() * 2;
+        target.setHp(target.getHp() + healAmount);
+        if (target.getHp() > 100) {
+            target.setHp(100);
+        }
+        System.out.println(getName() + " исцеляет " + target.getName() +
+                " божественной силой! +" + healAmount + " HP");
+    }
+
+    @Override
+    public void heal(Character target) {
+        healer(target); // вызываем метод из интерфейса
     }
 
     @Override
