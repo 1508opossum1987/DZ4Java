@@ -3,6 +3,8 @@ import Animals.Animal;
 import Animals.Cat;
 import Animals.Dog;
 import Animals.Bird;
+import MiniGame.*;
+import MiniGame.Character;
 import Salaries.Designer;
 import Salaries.Employer;
 import Salaries.Manager;
@@ -67,14 +69,38 @@ void main() {
         t.stop();
     }*/
     //5.
-    Initiable[] objects = {new Fish("fish"),
+    /*Initiable[] objects = {new Fish("fish"),
             new AmphibiousCar("amphibiousCar"),
             new Airplane("airplane"),
             new Duck("duck")};
     for (Initiable o : objects) {
         o.init();
-    }
+    }*/
 
     //6.
+    Character[] playerArmy = {new Knight("Рыцарь игрока"),
+                              new Paladin("Паладин игрока"),
+                              new Priest("Монах игрока"),
+                              new Wizard("Волшебник игрока")};
 
+    Character[] botArmy = {new Knight("Рыцарь бота"),
+                           new Paladin("Паладин бота"),
+                           new Priest("Монах бота"),
+                           new Wizard("Волшебник бота")};
+
+    System.out.println("Начинаем игру. Статистика: ");
+    for (Character p: playerArmy){
+        p.printStats();
+    }
+
+    for (Character b: botArmy){
+        b.printStats();
+    }
+
+    boolean isFinal=false;
+
+    //общий цикл запуска игры
+    while (!isFinal){
+
+    }
 }
