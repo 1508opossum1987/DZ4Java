@@ -16,12 +16,6 @@ import Interfaces.AmphibiousCar;
 import Interfaces.Airplane;
 import Interfaces.Duck;
 import Interfaces.Initiable;*/
-import MiniGame.Character;
-import MiniGame.Knight;
-import MiniGame.Wizard;
-import MiniGame.Priest;
-import MiniGame.Paladin;
-import MiniGame.Battle;
 
 
 public class Main {
@@ -83,27 +77,7 @@ public class Main {
         o.init();
     }*/
 
-        //6.
-        Character[] playerArmy = {new Knight("Рыцарь игрока"),
-                new Paladin("Паладин игрока"),
-                new Priest("Монах игрока"),
-                new Wizard("Волшебник игрока")};
+        //6. Into other simple project
 
-        Character[] botArmy = {new Knight("Рыцарь бота"),
-                new Paladin("Паладин бота"),
-                new Priest("Монах бота"),
-                new Wizard("Волшебник бота")};
-
-        System.out.println("Начинаем игру. Статистика: ");
-        for (Character p : playerArmy) {
-            p.printStats();
-        }
-
-        for (Character b : botArmy) {
-            b.printStats();
-        }
-
-        Battle battle = new Battle(playerArmy, botArmy);
-        battle.startBattle();
     }
 }
