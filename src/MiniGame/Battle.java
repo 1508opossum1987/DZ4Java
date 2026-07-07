@@ -8,17 +8,15 @@ public class Battle {
     private Character[] playerArmy;
     private Character[] botArmy;
     private Scanner console;
-    private Random random;
 
     public Battle(Character[] playerArmy, Character[] botArmy) {
         this.playerArmy = playerArmy;
         this.botArmy = botArmy;
         Scanner console = new Scanner(System.in);
-        Random random = new Random();
     }
 
     public void startBattle() {
-        while (isBattleOver()) {
+        while (!isBattleOver()) {
             showStats();
             playerTurn();
             isBattleOver();
@@ -65,13 +63,39 @@ public class Battle {
         }
     }
 
-    private void botTurn();
+    private void botTurn() {
+        for (Character b : botArmy) {
+            if (b.isAlive()) {
+                b.printStats();
+                if (b.getHp() <= 30 && b.canHeal()) {
+                    Character healTarget = getLowestHpTarget(botArmy);
+                    b.heal(healTarget);
+                } else {
+                    Character target = getRandomTarget(playerArmy);
+                    b.attack(target);
+                }
+            }
+        }
+    }
 
-    private void showStats();
+    private void showStats() {
+        System.out.println("===Промежуточные итоги==");
+        System.out.println("Армия игрока: ");
+        printAliveList(playerArmy);
+        System.out.println("Армия бота: ");
+        printAliveList(botArmy);
+    }
 
-    private boolean isBattleOver();
-
-    private void showWinner();
+    private boolean isBattleOver() {
+        if (getAliveCount(playerArmy) == 0) {
+            System.out.println("Вы проиграли...");
+            return true;
+        } else if (getAliveCount(botArmy) == 0) {
+            System.out.println("Вы победили!");
+            return true;
+        } else
+            return false;
+    }
 
     private Character chooseTarget(Character[] army) {
         printAliveList(army);
@@ -116,11 +140,29 @@ public class Battle {
     }
 }
 
-private Character getRandomTarget(Character[] army);
+private Character getRandomTarget(Character[] army) {
+    while (true) {
+        Random random = new Random();
+        int randomTarget = random.nextInt(army.length);
+        if (army[randomTarget].isAlive()) {
+            return army[randomTarget];
+        }
+    }
+}
 
-private Character getLowestHpTarget(Character[] army);
+private Character getLowestHpTarget(Character[] army) {
+    Character lowestHpCharacter = null;
 
-private boolean hasAlive(Character[] army);
+    for (Character c : army) {
+        if (c.isAlive()) {
+            if (lowestHpCharacter == null || c.getHp() < lowestHpCharacter.getHp()) {
+                lowestHpCharacter = c;
+            }
+        }
+    }
+
+    return lowestHpCharacter;
+}
 
 private int getAliveCount(Character[] army) {
     int count = 0;
@@ -132,8 +174,6 @@ private int getAliveCount(Character[] army) {
     return count;
 }
 
-void removeDead(Character[] army);
-
 void printAliveList(Character[] army) {
     int index = 1;
     for (int i = 0; i < army.length; i++) {
@@ -144,3 +184,4 @@ void printAliveList(Character[] army) {
         }
     }
 }
+

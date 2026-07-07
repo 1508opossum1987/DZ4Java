@@ -1,5 +1,4 @@
 package MiniGame;
-
 public abstract class Character {
     private String name;
     private int hp;
